@@ -48,7 +48,7 @@
     var id = $(this).data("burgerid");
 
     // Send the DELETE request.
-    $.ajax("/burgers" + id, {
+    $.ajax("/menu/" + id, {
       type: "DELETE"
     }).then(
       function() {
@@ -69,7 +69,7 @@
     };
 
     // Send the POST request.
-    $.ajax("/burgers", {
+    $.ajax("/menu/", {
       type: "POST",
       data: newBurger
     }).then(
@@ -89,11 +89,11 @@
     var id = $("[name=id]").val().trim();
 
     var updatedBurger = {
-      plan: $("#updateburger [name=burger_name]").val().trim()
+      burger: $("#updateburger [name=burger_name]").val().trim()
     };
 
     {{!-- // Send the PUT request.
-    $.ajax("/burgers" + id, {
+    $.ajax("/menu/" + id, {
       type: "PUT",
       data: updatedBurger
     }).then(
