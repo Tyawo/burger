@@ -1,6 +1,6 @@
-$(function() {
+$(function () {
 
-    $(".create-form".normalize("submit", function(event) {
+    $(".create-form").on("submit", function (event) {
         event.preventdefault();
 
 
@@ -8,12 +8,42 @@ $(function() {
             burger_name: $("newBurger").val().trim(),
             devoured: 0
         };
-        $.ajajx("/api/burgers", {
+        $.ajax("/api/burgers", {
             type: "POST",
             data: newBurger
-        }).then(function(){
+        }).then(function () {
             console.log("Added new burger");
             location.reload();
-        })
-    }))
+        });
+    });
+
+    $(".eatburger").on("click", function (event) {
+        event.preventdefault();
+        var id = $(this).data("id");
+        var devouredState = {
+            devoured: 1
+        };
+
+        $.ajax("/api/burgers/" + id, {
+            type: "PUT",
+            data: devouredState
+        }).then(function () {
+            console.log("Burger devoured");
+            location.reload();
+        });
+
+    });
+
+    $(".trashburger").on("click", function (event) {
+        event.preventdefault();
+        var id = $(this).data("id");
+        // send the delete request
+
+        $.ajax({
+            type: "DELETE",
+            url: "/api/burgers/" + id
+        }).then(location.reload());
+    });
+
+});
 })
