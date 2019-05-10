@@ -1,24 +1,26 @@
 <h1>BURGERS</h1>
 
 <h3>Order and Eat Your BURGER</h3>
-{{!-- 
+
 <ul>
   {{#each burgers}}
   	<li>
-  	   <p>ID: {{id}}</p>
-       <p>Burger: {{burger_name}}</p>
-       <p>Devoured: {{devoured}}</p>
+  	   <p>
+         {{id}}.{{burger_name}}
+         <button data-burgerid="{{id}}" class="delburger">Devour it</button>
+        </p>
+       {{!-- <p>Devoured: {{devoured}}</p> --}}
 
 
   	</li>
   {{/each}}
 </ul>
 
-<form action="/" method="POST">
+{{!-- <form action="/" method="POST">
 	<textarea type="text" name="burger_name"></textarea>
 
-	<button type="submit">Submit</button>
-</form>
+	{{!-- <button type="submit">Submit</button> --}}
+</form> --}}
 
 
 <h2>Add Your BURGER</h2>
@@ -27,7 +29,7 @@
   <button type="submit">Submit</button>
 </form>
 
-<h2>Update a Burger</h2>
+{{!-- <h2>Update a Burger</h2>
 <form id="updateburger" class="button-size">
   <select name="id">
 		{{#each burgers}}
@@ -36,7 +38,7 @@
 	</select>
   <textarea type="text" name="burger" placeholder="burger"></textarea>
   <button type="submit">Update Burger!</button>
-</form>
+</form> --}}
 
 
 <script type="text/javascript">
@@ -46,7 +48,7 @@
     var id = $(this).data("burgerid");
 
     // Send the DELETE request.
-    $.ajax("/menu/" + id, {
+    $.ajax("/burgers" + id, {
       type: "DELETE"
     }).then(
       function() {
@@ -63,11 +65,11 @@
 
     // [name=burger_name] will find an element with a "name" attribute equal to the string "burger_name"
     var newBurger = {
-      burger: $("#createburger [name=burger-name]").val().trim()
+      burger: $("#createburger [name=burger_name]").val().trim()
     };
 
     // Send the POST request.
-    $.ajax("/menu", {
+    $.ajax("/burgers", {
       type: "POST",
       data: newBurger
     }).then(
@@ -90,8 +92,8 @@
       plan: $("#updateburger [name=burger_name]").val().trim()
     };
 
-    // Send the PUT request.
-    $.ajax("/menu/" + id, {
+    {{!-- // Send the PUT request.
+    $.ajax("/burgers" + id, {
       type: "PUT",
       data: updatedBurger
     }).then(
@@ -100,6 +102,6 @@
         // Reload the page to get the updated list
         location.reload();
       }
-    );
-  }); --}}
-</script> --}}
+    ); --}}
+  
+</script>

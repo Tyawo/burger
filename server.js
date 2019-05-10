@@ -1,6 +1,6 @@
 var orm = require("./config/orm.js");
 
-var bodyParser = require("body-parser"); 
+// var bodyParser = require("body-parser"); 
 
 var exphbs = require("express-handlebars");
 
@@ -31,17 +31,3 @@ app.listen(PORT, function() {
   });
 
 
-// select all burgers
-orm.selectAll(function(burgers, err) {
-    if (err) {
-        return res.status(501).json({
-            message: "database error"
-        });
-    }
-res.render("index");
-});
-// Insert one
-
-// orm.insertOne()
-// // update one
-// orm.updateOne()
