@@ -28,49 +28,95 @@
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_xoYdpzovPmwA11B3Ry8PnaFSVe2BdnbbFXpjYzyqB0AB1XyNjg"
         class="img-fluid" alt="Responsive image">
       <h1 class="display-4"><strong>Place Your Order here</strong></h1>
+      <br>
       <h4>Choose from the menu or create your own burger!</h4>
-      <br>
-      <br>
-  <section> 
-  <h3>Menu</h3>
-  <ul>
-    {{#each burgers}}
-    <li>
-      <p>
-        {{id}}.{{burger_name}}
-        <button data-burgerid="{{id}}" class="delburger">Devour it</button>
-      </p>
-      {{!-- <p>Devoured: {{devoured}}</p> --}}
+
+      <section>
+        <form class="create-form">
+          <div class="form-group">
+            <label for="formGroupExampleInput2">Another label</label>
+            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+            <button type="submit" class="btn btn-success" id="addBurger">
+            </button>
+          </div>
+        </form>
+      </section>
+    </div>
+  
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="panel panel-default">
+          <div class="panel-heading" id="leftside"><strong>place your order</strong></div>
+          <div class="panel-body">
+
+            <ul>
+              {{#each burgers}}
+              {{#unless devoured}}
+                <span><strong>{{this.id}}.{{this.burger_name}}</strong></span>
+              {{/unless}}
+              {{!-- <li>
+                <p>
+                  {{id}}.{{burger_name}} --}}
+                  <button class="eatburger btn btn-warning" id="eatburger" data-id="{{this.id}}"data.newDevoured={{devour}}""
+                  thisclass="delburger">Devour it</button>
+                </p>
+                {{!-- <p>Devoured: {{devoured}}</p> -- --}}
+              </li>
+              {{/each}}
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
 
 
-    </li>
-    {{/each}}
-  </ul>
-  </section>
-  <p class="lead"><strong>Select your burger!</strong></p>
 
-   </div>
+    <div class="col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel heading" id="rightside"><strong>pLace your order</strong></div>
+        <div class="panel-body">
+          <h4>add content here</h4>
+        </div>
+      </div>
+    </div>
+  </div>
   </div>
 
 
-  <h1>BURGERS</h1>
+  {{!--   
+    <h3>Menu</h3>
 
+    <div class="form-group">
+    </div>
+    <div class="container">
+   
+   
+              <p class="lead"><strong>Select your burger!</strong></p>
+        </div>
 
+        <form action="/" method="POST">
+          <textarea type="text" name="burger_name"></textarea>
 
-  {{!-- <form action="/" method="POST">
-	<textarea type="text" name="burger_name"></textarea>
+          <button type="submit">Submit</button>
+        </form>
 
-	{{!-- <button type="submit">Submit</button> --}}
-  </form> --}}
-
-
-  <h2>Add Your BURGER</h2>
+        <h2>Add Your BURGER</h2>
   <form id="createburger" class="button-size">
     <textarea type="text" name="burger_name"></textarea>
     <button type="submit">Submit</button>
   </form>
+   </div>
+  </div>
 
-  {{!-- <h2>Update a Burger</h2>
+
+        <h1>BURGERS</h1>
+
+
+
+ 
+
+  <h2>Update a Burger</h2>
 <form id="updateburger" class="button-size">
   <select name="id">
 		{{#each burgers}}
@@ -79,7 +125,7 @@
 	</select>
   <textarea type="text" name="burger" placeholder="burger"></textarea>
   <button type="submit">Update Burger!</button>
-</form> --}}
+</form> --
 
 
   <script type="text/javascript">
@@ -148,13 +194,14 @@
                     location.reload();
                   }
                 ); --}
-          }
-
-  </script>
-  {{{body}}}
+          } --}}
 
 
-  <script src="/models/burger.js"></script>
+      { { { body } } }
+
+
+      <script src="/models/burger.js"></script>
+  </div>
 </body>
 
 </html>
