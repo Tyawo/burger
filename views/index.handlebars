@@ -31,61 +31,69 @@
       <br>
       <h4>Choose from the menu or create your own burger!</h4>
 
-      <section>
-        <form class="create-form">
-          <div class="form-group">
-            <label for="formGroupExampleInput2">Another label</label>
-            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
-            <button type="submit" class="btn btn-success" id="addBurger">
-            </button>
-          </div>
-        </form>
-      </section>
-    </div>
-  
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="panel panel-default">
-          <div class="panel-heading" id="leftside"><strong>place your order</strong></div>
-          <div class="panel-body">
+     
+      <div class="row">
+        <div class="col-sm-6">
+
+          <br>
+          <h5>Choose from the menu...</h5>
+
+          <ul>
+            {{#each burgers}}
+            {{#unless devoured}}
+
+            <span><strong>{{this.id}}-{{this.burger_name}}</strong></span>
+
+            <form action="/{{this.id}}?_method=PUT" method="POST">
+              <input type="hidden" name="devoured" value="true">
+              <button class="eatburger btn btn-warning" type="submit">Devour it!</button>
+            </form>
+
+            <br>
+            {{/unless}}
+            {{/each}}
+          </ul>
+
+        </div>
+
+
+
+        <div class="col-sm-6">
+
+            <br>
+            <h5>Devoured Burgers...</h5>
 
             <ul>
               {{#each burgers}}
-              {{#unless devoured}}
-                <span><strong>{{this.id}}.{{this.burger_name}}</strong></span>
-              {{/unless}}
-              {{!-- <li>
-                <p>
-                  {{id}}.{{burger_name}} --}}
-                  <button class="eatburger btn btn-warning" id="eatburger" data-id="{{this.id}}"data.newDevoured={{devour}}""
-                  thisclass="delburger">Devour it</button>
-                </p>
-                {{!-- <p>Devoured: {{devoured}}</p> -- --}}
-              </li>
+              {{#if devoured}}
+
+              <span><strong>{{this.id}}-{{this.burger_name}}</strong></span>
+             
+              <br>
+              {{/if}}
               {{/each}}
             </ul>
 
           </div>
         </div>
-      </div>
-    </div>
+     
+     <div class= col-sm-12></div>
+     <h5 Add A Burger! ></h5>
+
+     <form id="create-update" action="/" method="POST">
+     <div class="form-group">
+       <p>Choose a burger and click the Submit button to place your order</p>
+       <input type="text" name="burger_name" id="ca">
+     </div>
+  <button class="btn-primary" type="submit">Submit</button>
+</form>
 
 
 
-    <div class="col-sm-6">
-      <div class="panel panel-default">
-        <div class="panel heading" id="rightside"><strong>pLace your order</strong></div>
-        <div class="panel-body">
-          <h4>add content here</h4>
-        </div>
-      </div>
-    </div>
+
+  <script src="/models/burger.js"></script>
   </div>
-  </div>
 
-
-  
-      <script src="/models/burger.js"></script>
   </div>
 </body>
 
