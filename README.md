@@ -28,8 +28,3 @@ Also, the user can add his own sandwich. It will be displayed in the list of ava
 Notice that each time a sandwich is eaten or added, the database is updated to account for the change. 
 
 
-### Some Eat dat Burger app Gifs
-
-
-
-
