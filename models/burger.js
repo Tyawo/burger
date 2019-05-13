@@ -19,7 +19,7 @@ var burger = {
     });
   },
   deleteOne: function(objColVals, condition, cb) {
-    orm.deleteOne("burgers", condition, function(res) {
+    orm.deleteOne("burgers", objColVals, condition, function(res) {
       cb(res);
     });
   }

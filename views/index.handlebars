@@ -27,11 +27,13 @@
       <img
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_xoYdpzovPmwA11B3Ry8PnaFSVe2BdnbbFXpjYzyqB0AB1XyNjg"
         class="img-fluid" alt="Responsive image">
-      <h1 class="display-4"><strong>Place Your Order here</strong></h1>
+        <br>
       <br>
-      <h4>Choose from the menu or create your own burger!</h4>
+      <h2 class="display-4"><strong>Eat dat Burger!</strong></h2>
+      <br>
+      <h4><strong>Choose from the menu or create your own burger!</strong></h4>
 
-     
+
       <div class="row">
         <div class="col-sm-6">
 
@@ -60,39 +62,39 @@
 
         <div class="col-sm-6">
 
+          <br>
+          <h5>Devoured Burgers...</h5>
+
+          <ul>
+            {{#each burgers}}
+            {{#if devoured}}
+
+            <span><strong>{{this.id}}-{{this.burger_name}}</strong></span>
+
             <br>
-            <h5>Devoured Burgers...</h5>
+            {{/if}}
+            {{/each}}
+          </ul>
 
-            <ul>
-              {{#each burgers}}
-              {{#if devoured}}
-
-              <span><strong>{{this.id}}-{{this.burger_name}}</strong></span>
-             
-              <br>
-              {{/if}}
-              {{/each}}
-            </ul>
-
-          </div>
         </div>
-     
-     <div class= col-sm-12></div>
-     <h5 Add A Burger! ></h5>
+      </div>
 
-     <form id="create-update" action="/" method="POST">
-     <div class="form-group">
-       <p>Choose a burger and click the Submit button to place your order</p>
-       <input type="text" name="burger_name" id="ca">
-     </div>
-  <button class="btn-primary" type="submit">Submit</button>
-</form>
+      <div class=col-sm-12></div>
+      <h5 Add A Burger!></h5>
+
+      <form id="create-update" action="/" method="POST">
+        <div class="form-group">
+          <p>Choose a burger and click the Submit button to place your order</p>
+          <input type="text" name="burger_name" id="ca">
+        </div>
+        <button class="btn-primary" type="submit">Submit</button>
+      </form>
 
 
 
 
-  <script src="/models/burger.js"></script>
-  </div>
+      <script src="/models/burger.js"></script>
+    </div>
 
   </div>
 </body>
