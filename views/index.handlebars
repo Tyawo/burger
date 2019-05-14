@@ -27,7 +27,7 @@
       <img
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_xoYdpzovPmwA11B3Ry8PnaFSVe2BdnbbFXpjYzyqB0AB1XyNjg"
         class="img-fluid" alt="Responsive image">
-        <br>
+      <br>
       <br>
       <h2 class="display-4"><strong>Eat dat Burger!</strong></h2>
       <br>
@@ -44,11 +44,11 @@
             {{#each burgers}}
             {{#unless devoured}}
 
-            <span><strong>{{this.id}}-{{this.burger_name}}</strong></span>
+            <span><strong>{{this.id}}.{{this.burger_name}}</strong></span>
 
             <form action="/{{this.id}}?_method=PUT" method="POST">
-              <input type="hidden" name="devoured" value="true">
-              <button class="eatburger btn btn-warning" type="submit">Devour it!</button>
+              <input type="hidden" name="devoured" value="1">
+              <button class="devour it btn btn-warning" id="del" type="submit">Devour it!</button>
             </form>
 
             <br>
@@ -67,9 +67,13 @@
 
           <ul>
             {{#each burgers}}
-            {{#if devoured}}
-
-            <span><strong>{{this.id}}-{{this.burger_name}}</strong></span>
+            {{#if this.devoured}}
+            {{!-- <form> --}}
+              {{!-- <span><strong>{{this.id}}.{{this.burger_name}}</strong></span> --}}
+              {{!-- <form action="/{{this.id}}?_method=PUT" method="POST"> --}}
+              {{!-- <input type="hidden" name="devoured" value="0"> --}}
+              {{!-- <button data-devouredid="{{this.devoured}}" class="delet"> Devour it</button> --}}
+            {{!-- </form> --}}
 
             <br>
             {{/if}}
@@ -86,11 +90,22 @@
         <div class="form-group">
           <p>Choose a burger and click the Submit button to place your order</p>
           <input type="text" name="burger_name" id="ca">
+          <input type="hidden" name="devoured" value="1">
         </div>
         <button class="btn-primary" type="submit">Submit</button>
       </form>
 
+      <script type="text/javascript">
+        S(".devour it").on("click", function (event) {
+          var id = $(this).data("del");
 
+          $.ajax("/burgers" + id , {
+            type: "DELETE".then(function() {
+              console.log("deleted id ", id);
+            })
+          })
+})
+      </script>
 
 
       <script src="/models/burger.js"></script>

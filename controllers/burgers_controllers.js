@@ -11,21 +11,21 @@ router.get("/", function(req, res) {
     var hbsObject = {
       burgers: data
     };
+
     console.log(hbsObject);
     res.render("index", hbsObject);
   });
 });
 
+// Create a new burger with id
 router.post("/", function(req, res) {
   burger.insertOne(["burger_name", "devoured"], [req.body.burger_name, req.body.devoured], function() {
     
   res.redirect("/");
-  // function(result) {
-  //   // Send back the ID of the new quote
-  //   res.json({ id: result.insertId });
   });
 });
 
+// Update the burger count
 router.put("/:id", function(req, res) {
   var condition = "id = " + req.params.id;
 
@@ -35,12 +35,6 @@ router.put("/:id", function(req, res) {
     devoured: req.body.devoured
   }, condition, function() {
     res.redirect("/");
-    // if (result.changedRows == 0) {
-    //   // If no rows were changed, then the ID must not exist, so 404
-    //   return res.status(404).end();
-    // } else {
-    //   res.status(200).end();
-    // }
   });
 });
 
