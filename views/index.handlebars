@@ -44,11 +44,11 @@
             {{#each burgers}}
             {{#unless devoured}}
 
-            <span><strong>{{this.id}}.{{this.burger_name}}</strong></span>
+            <span><strong>{{this.id}}-{{this.burger_name}}</strong></span>
 
             <form action="/{{this.id}}?_method=PUT" method="POST">
-              <input type="hidden" name="devoured" value="1">
-              <button class="devour it btn btn-warning" id="del" type="submit">Devour it!</button>
+              <input type="hidden" name="devoured" value="true">
+              <button class="devour it btn btn-warning" id={{this.id}} type="submit">Devour it!</button>
             </form>
 
             <br>
@@ -67,9 +67,9 @@
 
           <ul>
             {{#each burgers}}
-            {{#if this.devoured}}
-            {{!-- <form> --}}
-              {{!-- <span><strong>{{this.id}}.{{this.burger_name}}</strong></span> --}}
+            {{#if devoured}}
+
+              <span><strong>{{this.id}}-{{this.burger_name}}</strong></span> 
               {{!-- <form action="/{{this.id}}?_method=PUT" method="POST"> --}}
               {{!-- <input type="hidden" name="devoured" value="0"> --}}
               {{!-- <button data-devouredid="{{this.devoured}}" class="delet"> Devour it</button> --}}
@@ -108,7 +108,7 @@
       </script>
 
 
-      <script src="/models/burger.js"></script>
+      <script src="./assets/js/burger.js"></script>
     </div>
 
   </div>
