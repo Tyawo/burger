@@ -28,7 +28,7 @@ router.post("/", function(req, res) {
 // Update the burger count
 router.put("/api/burgers/:id", function(req, res) {
   var condition = "id = " + req.params.id;
-
+  console.log("thi8s was fired!!!!!!!!!!!!!")
   console.log("condition", condition);
 
   burger.updateOne({

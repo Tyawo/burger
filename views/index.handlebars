@@ -48,7 +48,7 @@
 
             <form action="/{{this.id}}?_method=PUT" method="POST">
               <input type="hidden" name="devoured" value="true">
-              <button class="devour it btn btn-warning" id={{this.id}} type="submit">Devour it!</button>
+              <button class="eatburger btn btn-warning" id={{this.id}} type="submit">Devour it!</button>
             </form>
 
             <br>
@@ -72,7 +72,7 @@
               <span><strong>{{this.id}}-{{this.burger_name}}</strong></span> 
               {{!-- <form action="/{{this.id}}?_method=PUT" method="POST"> --}}
               {{!-- <input type="hidden" name="devoured" value="0"> --}}
-              {{!-- <button data-devouredid="{{this.devoured}}" class="delet"> Devour it</button> --}}
+              {{!-- <button id={{this.id}} class="delet"> Devour it</button> --}}
             {{!-- </form> --}}
 
             <br>
@@ -90,22 +90,23 @@
         <div class="form-group">
           <p>Choose a burger and click the Submit button to place your order</p>
           <input type="text" name="burger_name" id="ca">
-          <input type="hidden" name="devoured" value="1">
+          <input type="hidden" name="devoured" value="0">
         </div>
         <button class="btn-primary" type="submit">Submit</button>
       </form>
 
-      <script type="text/javascript">
-        S(".devour it").on("click", function (event) {
-          var id = $(this).data("del");
+      {{!-- <script type="text/javascript">
+        $(".devour it").on("click", function (event) {
+          event.preventDefault();
+          var id = $(this).attr("id");
 
-          $.ajax("/burgers" + id , {
+          $.ajax("/api/burgers" + id , {
             type: "DELETE".then(function() {
               console.log("deleted id ", id);
             })
           })
 })
-      </script>
+      </script> --}}
 
 
       <script src="./assets/js/burger.js"></script>
