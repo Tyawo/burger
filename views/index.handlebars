@@ -42,12 +42,12 @@
 
           <ul>
             {{#each burgers}}
-            {{#unless devoured}}
+            {{#unless this.devoured}}
 
             <span><strong>{{this.id}}-{{this.burger_name}}</strong></span>
 
             <form action="/{{this.id}}?_method=PUT" method="POST">
-              <input type="hidden" name="devoured" value="true">
+              <input type="hidden" name="burger_id" value="true">
               <button class="eatburger btn btn-warning" id={{this.id}} type="submit">Devour it!</button>
             </form>
 
@@ -65,7 +65,7 @@
           <br>
           <h5>Devoured Burgers...</h5>
 
-          <ul>
+          <ul class="devouredburgers">
             {{#each burgers}}
             {{#if devoured}}
 

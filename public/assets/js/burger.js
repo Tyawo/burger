@@ -2,7 +2,7 @@ $(function () {
 
     $(".create-form").on("submit", function (event) {
         event.preventDefault();
-
+        // $(".devouredburgers").empty();
 
         var newBurger = {
             burger_name: $("newBurger").val().trim(),
@@ -35,7 +35,7 @@ $(function () {
     });
 
     $(".trashburger").on("click", function (event) {
-        event.preventdefault();
+        // event.preventdefault();
         var id = $(this).data("id");
         // send the delete request
 
@@ -44,5 +44,6 @@ $(function () {
             url: "/api/burgers/" + id
         }).then(location.reload());
     });
-
+    
 });
+
